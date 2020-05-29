@@ -61,16 +61,19 @@ unzip orb_vocab.zip
 ```
 Run OpenVSLAM (Gopro IMU Dataset):
 ```
+cd /path/to/openvslam/build/
 ./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_gopro.yaml     -m ./Gopro_video.avi    --eval-log
 ```
 
 Run OpenVSLAM (EuroC Dataset):
 ```
+cd /path/to/openvslam/build/
 ./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_euroc.yaml     -m ./euroc_video.avi    --eval-log
 ```
 
 Run OpenVSLAM (Kitti Dataset):
 ```
+cd /path/to/openvslam/build/
 ./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_kitti.yaml     -m ./kitti_video.avi    --eval-log
 ```
 
