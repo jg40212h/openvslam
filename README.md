@@ -59,19 +59,19 @@ CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
 curl -sLb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=${FILE_ID}" -o orb_vocab.zip
 unzip orb_vocab.zip
 ```
-Run OpenVSLAM (Gopro IMU Dataset):
+Run OpenVSLAM ([Gopro IMU Dataset](https://www.cvl.isy.liu.se/en/research/datasets/gopro-imu-dataset/)):
 ```
 cd /path/to/openvslam/build/
 ./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_gopro.yaml     -m ./Gopro_video.avi    --eval-log
 ```
 
-Run OpenVSLAM (EuroC Dataset):
+Run OpenVSLAM ([EuroC Dataset](https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets)):
 ```
 cd /path/to/openvslam/build/
 ./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_euroc.yaml     -m ./euroc_video.avi    --eval-log
 ```
 
-Run OpenVSLAM (Kitti Dataset):
+Run OpenVSLAM ([Kitti Dataset](http://www.cvlibs.net/datasets/kitti/raw_data.php)):
 ```
 cd /path/to/openvslam/build/
 ./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_kitti.yaml     -m ./kitti_video.avi    --eval-log
