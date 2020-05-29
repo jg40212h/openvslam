@@ -62,19 +62,19 @@ unzip orb_vocab.zip
 Run OpenVSLAM ([Gopro IMU Dataset](https://www.cvl.isy.liu.se/en/research/datasets/gopro-imu-dataset/)):
 ```
 cd /path/to/openvslam/build/
-./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_gopro.yaml     -m ./Gopro_video.avi    --eval-log
+./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_gopro.yaml     -m ../video/Gopro_IMU/*.mp4    --eval-log
 ```
 
 Run OpenVSLAM ([EuroC Dataset](https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets)):
 ```
 cd /path/to/openvslam/build/
-./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_euroc.yaml     -m ./euroc_video.avi    --eval-log
+./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_euroc.yaml     -m ../video/EuroC/*.mp4    --eval-log
 ```
 
 Run OpenVSLAM ([Kitti Dataset](http://www.cvlibs.net/datasets/kitti/raw_data.php)):
 ```
 cd /path/to/openvslam/build/
-./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_kitti.yaml     -m ./kitti_video.avi    --eval-log
+./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_kitti.yaml     -m ../video/Kitti/*.mp4    --eval-log
 ```
 Press "Terminate" when the video is finished, and there will be frame_trajectory.txt in /path/to/openvslam/build/
 <img src="./docs/img/output.png" >
