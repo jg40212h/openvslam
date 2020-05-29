@@ -1,0 +1,37 @@
+# LUMIX fisheye model for 1K setting
+
+#==============#
+# Camera Model #
+#==============#
+
+Camera.name: "LUMIX DMC-GX8 8mm fisheye 1K"
+Camera.setup: "monocular"
+Camera.model: "perspective"
+
+Camera.fx: 855.10363082
+Camera.fy: 870.57627866  
+Camera.cx: 987.87297848
+Camera.cy: 529.7808111
+
+Camera.k1: 0.0
+Camera.k2: 0.0
+Camera.p1: 0.0
+Camera.p2: 0.0
+Camera.k3: 0.0
+
+Camera.fps: 30
+Camera.cols: 1920
+Camera.rows: 1080
+
+Camera.color_order: "RGB"
+
+#================#
+# orb parameters #
+#================#
+
+Feature.max_num_keypoints: 8000
+Feature.scale_factor: 1.2
+Feature.num_levels: 8
+Feature.ini_fast_threshold: 20
+Feature.min_fast_threshold: 7
+
