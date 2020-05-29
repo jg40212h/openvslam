@@ -50,8 +50,18 @@ Please see [**Installation**](https://openvslam.readthedocs.io/en/master/install
 [**The instructions for Docker users**](https://openvslam.readthedocs.io/en/master/docker.html) are also provided.
 
 ## Tutorial
+First, download sample ORB vocabulary file:
+```
+cd /path/to/openvslam/build/
+FILE_ID="1wUPb328th8bUqhOk-i8xllt5mgRW4n84"
+curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=${FILE_ID}" > /dev/null
+CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
+curl -sLb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=${FILE_ID}" -o orb_vocab.zip
+unzip orb_vocab.zip
+```
 
-Please see [**Simple Tutorial**](https://openvslam.readthedocs.io/en/master/simple_tutorial.html) chapter in the [documentation](https://openvslam.readthedocs.io/).
+
+Or see [**Simple Tutorial**](https://openvslam.readthedocs.io/en/master/simple_tutorial.html) chapter in the [documentation](https://openvslam.readthedocs.io/).
 
 A sample ORB vocabulary file can be downloaded from [here](https://drive.google.com/open?id=1wUPb328th8bUqhOk-i8xllt5mgRW4n84).
 Sample datasets are also provided at [here](https://drive.google.com/open?id=1A_gq8LYuENePhNHsuscLZQPhbJJwzAq4).
