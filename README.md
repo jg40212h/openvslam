@@ -59,7 +59,20 @@ CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
 curl -sLb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=${FILE_ID}" -o orb_vocab.zip
 unzip orb_vocab.zip
 ```
+Run OpenVSLAM (Gopro IMU Dataset):
+```
+./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_gopro.yaml     -m ./Gopro_video.avi    --eval-log
+```
 
+Run OpenVSLAM (EuroC Dataset):
+```
+./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_euroc.yaml     -m ./euroc_video.avi    --eval-log
+```
+
+Run OpenVSLAM (Kitti Dataset):
+```
+./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_kitti.yaml     -m ./kitti_video.avi    --eval-log
+```
 
 Or see [**Simple Tutorial**](https://openvslam.readthedocs.io/en/master/simple_tutorial.html) chapter in the [documentation](https://openvslam.readthedocs.io/).
 
