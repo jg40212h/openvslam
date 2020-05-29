@@ -76,6 +76,9 @@ Run OpenVSLAM (Kitti Dataset):
 cd /path/to/openvslam/build/
 ./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_kitti.yaml     -m ./kitti_video.avi    --eval-log
 ```
+Press "Terminate" when the video id finished, and there will be frame_trajectory.txt in /path/to/openvslam/build/
+<img src="./docs/img/output.png" >
+
 
 Or see [**Simple Tutorial**](https://openvslam.readthedocs.io/en/master/simple_tutorial.html) chapter in the [documentation](https://openvslam.readthedocs.io/).
 
