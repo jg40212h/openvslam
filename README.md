@@ -250,6 +250,12 @@ cd /path/to/openvslam/build/
 ```
 **When the video is finished, beacause of the option "--auto-term", the program will terminate and there will be frame_trajectory.txt in /path/to/openvslam/build/**
 
+In frame_trajectory.txt, there will be time and camera pose in every line:
+```
+video_time, position_x, position_y, position_z, quatarnion_x, quatarnion_y, quatarnion_z, quatarnion_w
+```
+<img src="./docs/img/OpenVSLAM_Output.png" >
+
 If you want to stop the program when the video is still playing, please press the "Terminate"
 <img src="./docs/img/output.png" >
 
