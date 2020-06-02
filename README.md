@@ -248,7 +248,7 @@ Run OpenVSLAM ([Kitti Dataset](http://www.cvlibs.net/datasets/kitti/raw_data.php
 cd /path/to/openvslam/build/
 ./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_kitti.yaml     -m ../video/Kitti/*.mp4    --eval-log --auto-term
 ```
-When the video is finished, beacause of the option "--auto-term", the program will terminate and there will be frame_trajectory.txt in /path/to/openvslam/build/
+**When the video is finished, beacause of the option "--auto-term", the program will terminate and there will be frame_trajectory.txt in /path/to/openvslam/build/**
 
 If you want to stop the program when the video is still playing, please press the "Terminate"
 <img src="./docs/img/output.png" >
