@@ -194,6 +194,28 @@ cmake \
 make -j4
 ```
 
+**Test OpenVSLAM**:
+```
+./run_video_slam -h
+```
+
+   It should show some options in your terminal:
+```
+Allowed options:
+  -h, --help             produce help message
+  -v, --vocab arg        vocabulary file path
+  -m, --video arg        video file path
+  -c, --config arg       config file path
+  --mask arg             mask image path
+  --frame-skip arg (=1)  interval of frame skip
+  --no-sleep             not wait for next frame in real time
+  --auto-term            automatically terminate the viewer
+  --debug                debug mode
+  --eval-log             store trajectory and tracking times for evaluation
+  -p, --map-db arg       store a map database at this path after SLAM
+```
+
+
 More Detail please see [**Installation**](https://openvslam.readthedocs.io/en/master/installation.html) chapter in the [documentation](https://openvslam.readthedocs.io/).
 
 [**The instructions for Docker users**](https://openvslam.readthedocs.io/en/master/docker.html) are also provided.
@@ -208,25 +230,29 @@ CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
 curl -sLb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=${FILE_ID}" -o orb_vocab.zip
 unzip orb_vocab.zip
 ```
+
 Run OpenVSLAM ([Gopro IMU Dataset](https://www.cvl.isy.liu.se/en/research/datasets/gopro-imu-dataset/)):
 ```
 cd /path/to/openvslam/build/
-./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_gopro.yaml     -m ../video/Gopro_IMU/*.mp4    --eval-log
+./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_gopro.yaml     -m ../video/Gopro_IMU/*.mp4    --eval-log --auto-term
 ```
 
 Run OpenVSLAM ([EuroC Dataset](https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets)):
 ```
 cd /path/to/openvslam/build/
-./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_euroc.yaml     -m ../video/EuroC/*.mp4    --eval-log
+./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_euroc.yaml     -m ../video/EuroC/*.mp4    --eval-log --auto-term
 ```
 
 Run OpenVSLAM ([Kitti Dataset](http://www.cvlibs.net/datasets/kitti/raw_data.php)):
 ```
 cd /path/to/openvslam/build/
-./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_kitti.yaml     -m ../video/Kitti/*.mp4    --eval-log
+./run_video_slam     -v ./orb_vocab/orb_vocab.dbow2     -c ./../config/config_kitti.yaml     -m ../video/Kitti/*.mp4    --eval-log --auto-term
 ```
-Press "Terminate" when the video is finished, and there will be frame_trajectory.txt in /path/to/openvslam/build/
+When the video is finished, beacause of the option "--auto-term", the program will terminate and there will be frame_trajectory.txt in /path/to/openvslam/build/
+
+If you want to stop the program when the video is still playing, please press the "Terminate"
 <img src="./docs/img/output.png" >
+
 
 
 Or see [**Simple Tutorial**](https://openvslam.readthedocs.io/en/master/simple_tutorial.html) chapter in the [documentation](https://openvslam.readthedocs.io/).
