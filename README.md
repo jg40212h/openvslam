@@ -45,7 +45,156 @@ In return, we hope this project will bring safe and reliable technologies for a 
 
 ## Installation
 
-Please see [**Installation**](https://openvslam.readthedocs.io/en/master/installation.html) chapter in the [documentation](https://openvslam.readthedocs.io/).
+**Requirements for OpenVSLAM**:
+
+- Eigen : version 3.3.0 or later.
+- g2o : Please use the latest release. Tested on commit ID 9b41a4e.
+- SuiteSparse : Required by g2o.
+- DBoW2 : Please use the custom version of DBoW2 released in https://github.com/shinsumicco/DBoW2.
+- yaml-cpp : version 0.6.0 or later.
+- OpenCV : version 3.3.1 or later.
+
+**Install the dependencies via apt**:
+```
+apt update -y
+apt upgrade -y --no-install-recommends
+# basic dependencies
+apt install -y build-essential pkg-config cmake git wget curl unzip
+# g2o dependencies
+apt install -y libatlas-base-dev libsuitesparse-dev
+# OpenCV dependencies
+apt install -y libgtk-3-dev
+apt install -y ffmpeg
+apt install -y libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libavresample-dev
+# eigen dependencies
+apt install -y gfortran
+# other dependencies
+apt install -y libyaml-cpp-dev libgoogle-glog-dev libgflags-dev
+
+# (if you plan on using PangolinViewer)
+# Pangolin dependencies
+apt install -y libglew-dev
+
+# (if you plan on using SocketViewer)
+# Protobuf dependencies
+apt install -y autogen autoconf libtool
+# Node.js
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+apt install -y nodejs
+```
+
+**Download and install Eigen from source**:
+```
+cd /path/to/working/dir
+wget -q http://bitbucket.org/eigen/eigen/get/3.3.4.tar.bz2
+tar xf 3.3.4.tar.bz2
+rm -rf 3.3.4.tar.bz2
+cd eigen-eigen-5a0156e40feb
+mkdir -p build && cd build
+cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr/local \
+    ..
+make -j4
+make install
+```
+
+**Download, build and install OpenCV from source**:
+```
+cd /path/to/working/dir
+wget -q https://github.com/opencv/opencv/archive/3.4.0.zip
+unzip -q 3.4.0.zip
+rm -rf 3.4.0.zip
+cd opencv-3.4.0
+mkdir -p build && cd build
+cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr/local \
+    -DENABLE_CXX11=ON \
+    -DBUILD_DOCS=OFF \
+    -DBUILD_EXAMPLES=OFF \
+    -DBUILD_JASPER=OFF \
+    -DBUILD_OPENEXR=OFF \
+    -DBUILD_PERF_TESTS=OFF \
+    -DBUILD_TESTS=OFF \
+    -DWITH_EIGEN=ON \
+    -DWITH_FFMPEG=ON \
+    -DWITH_OPENMP=ON \
+    ..
+make -j4
+make install
+```
+
+**Download, build and install the custom DBoW2 from source**:
+```
+cd /path/to/working/dir
+git clone https://github.com/shinsumicco/DBoW2.git
+cd DBoW2
+mkdir build && cd build
+cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr/local \
+    ..
+make -j4
+make install
+```
+
+**Download, build and install g2o**:
+```
+cd /path/to/working/dir
+git clone https://github.com/RainerKuemmerle/g2o.git
+cd g2o
+git checkout 9b41a4ea5ade8e1250b9c1b279f3a9c098811b5a
+mkdir build && cd build
+cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr/local \
+    -DCMAKE_CXX_FLAGS=-std=c++11 \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_UNITTESTS=OFF \
+    -DBUILD_WITH_MARCH_NATIVE=ON \
+    -DG2O_USE_CHOLMOD=OFF \
+    -DG2O_USE_CSPARSE=ON \
+    -DG2O_USE_OPENGL=OFF \
+    -DG2O_USE_OPENMP=ON \
+    ..
+make -j4
+make install
+```
+
+**Download, build and install Pangolin from source**:
+```
+cd /path/to/working/dir
+git clone https://github.com/stevenlovegrove/Pangolin.git
+cd Pangolin
+git checkout ad8b5f83222291c51b4800d5a5873b0e90a0cf81
+mkdir build && cd build
+cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr/local \
+    ..
+make -j4
+make install
+```
+
+**Build OpenVSLAM**:
+```
+cd /path/to/working/dir
+git clone https://github.com/jg40212h/openvslam
+cd openvslam
+mkdir build && cd build
+cmake \
+    -DBUILD_WITH_MARCH_NATIVE=ON \
+    -DUSE_PANGOLIN_VIEWER=ON \
+    -DUSE_SOCKET_PUBLISHER=OFF \
+    -DUSE_STACK_TRACE_LOGGER=ON \
+    -DBOW_FRAMEWORK=DBoW2 \
+    -DBUILD_TESTS=ON \
+    ..
+make -j4
+```
+
+More Detail please see [**Installation**](https://openvslam.readthedocs.io/en/master/installation.html) chapter in the [documentation](https://openvslam.readthedocs.io/).
 
 [**The instructions for Docker users**](https://openvslam.readthedocs.io/en/master/docker.html) are also provided.
 
